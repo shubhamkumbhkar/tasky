@@ -1,7 +1,6 @@
-class Project < ApplicationRecord
+class Task < ApplicationRecord
   belongs_to :user
-  has_many :tasks, dependent: :destroy
-
+  belongs_to :project
 
   validates :name, presence: { message:"Can not be empty" }
   validates :description, presence: { message:"Can not be empty" }

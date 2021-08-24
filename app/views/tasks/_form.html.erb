@@ -1,0 +1,22 @@
+<%= form_with model: [ @project, @project.tasks.build ] do |f| %>
+
+  <div class="field">
+    <%= f.label :Name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+   <div class="field">
+   <br >
+  <%= f.select :status, ["Initiation", "Planning", "Execution", "Monitoring", "Closure"] %>
+
+  </div>
+
+   <div class="field">
+    <%= f.label :'Description' %><br />
+    <%= f.text_field :description, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

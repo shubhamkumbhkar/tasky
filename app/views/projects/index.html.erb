@@ -1,0 +1,27 @@
+<h1>Projects</h1>
+<% if current_user.projects.any?%>
+<%= link_to('Home', root_path) %>
+
+<% current_user.projects.order(created_at: :desc).each do |project| %>
+  <h3> Project </h3>
+  
+  Project by <%= project.user.username %> <br><br>
+  <strong> <%= project.name %> </strong>
+  &emsp; <%= project.status %> &emsp;&emsp;&emsp;
+  <%= time_ago_in_words(project.created_at) %> Ago
+  <br><br>
+  <% #byebug %>
+    &emsp;<%= link_to "View", project_path(project) %>
+
+    &emsp;<%= link_to "Edit", edit_project_path(project) %>
+
+
+    <%= link_to "Delete", project_path(project),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+  <br>    
+  <% end %>
+<% else %>
+    <h3> You dont have any projects yet</h3>
+    <%= link_to('Home', root_path) %>
+<% end %>

@@ -1,6 +1,16 @@
 <h1>Tasky</h1>
 <p>Welcome to Tasky</p>
-
+<% #byebug %>
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Your Projects', projects_path) %>        
+  </li>
+<% end %>
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('create', new_project_path) %>        
+  </li>
+<% end %>
 
 <% if user_signed_in? %>
   <li>

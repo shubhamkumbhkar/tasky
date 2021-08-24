@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :projects, dependent: :destroy
+  
   validates  :fname, :lname, :username, :mnum, presence: true
   validates :username, presence: true, length: {minimum: 3, maximum: 20 },
     format: { with: /\A[a-zA-Z0-9]+\z/, message: 'cannot have special characters'  },

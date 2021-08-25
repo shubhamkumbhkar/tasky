@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     if @task.save
       render "projects/show"
     else
-      render "projects/show"
+      render "new"
     end
   end
   def show

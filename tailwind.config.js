@@ -10,6 +10,9 @@ module.exports = {
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+      container: {
+        center: true,
+      },
     screens: {
       sm: '640px',
       md: '768px',

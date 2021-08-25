@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
+    @project.documents.attach(params[:project][:documents])
     if @project.save
       render "projects/index"
     else
@@ -24,6 +25,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update(project_params)
+      @project.documents.attach(params[:project][:documents])
       render "projects/index"
     else
       redirect_to @project
@@ -38,6 +40,6 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:name, :status, :description)
+      params.require(:project).permit(:name, :status, :description, documents: [])
     end
 end

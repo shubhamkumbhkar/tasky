@@ -1,7 +1,5 @@
 class User < ApplicationRecord
   has_many :projects, dependent: :destroy
-  has_many :tasks, dependent: :destroy
-
   
   validates  :fname, :lname, :username, :mnum, presence: true
   validates :username, presence: true, length: {minimum: 3, maximum: 20 },

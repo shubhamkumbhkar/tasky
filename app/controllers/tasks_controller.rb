@@ -8,10 +8,11 @@ class TasksController < ApplicationController
 
   end
   def create
-    #byebug
     @project = Project.find(params[:project_id])
     @task = @project.tasks.new(task_params)
-    @task.user_id = current_user.id
+    @task.documents.attach(params[:task][:documents])
+
+    #byebug
     if @task.save
       render "projects/show"
     else
@@ -31,6 +32,7 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task =Project.find(params[:project_id]).tasks.find(params[:id])
     if @task.update(task_params)
+      @task.documents.attach(params[:task][:documents])
       render "tasks/show"
     else
     end
@@ -48,7 +50,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :status, :description)
+    params.require(:task).permit(:name, :status, :description, documents: [])
   end
   
 end

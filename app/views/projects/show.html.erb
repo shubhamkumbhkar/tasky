@@ -89,8 +89,8 @@
             <thead>
               <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                 <th class="py-3 px-6 text-left">Name</th>
-                <th class="py-3 px-6 text-left">Lead</th>
-                <th class="py-3 px-6 text-center">Team</th>
+                <th class="py-3 px-6 text-left">Assigned by</th>
+                <th class="py-3 px-6 text-center">Assigned to</th>
                 <th class="py-3 px-6 text-center">Status</th>
                 <th class="py-3 px-6 text-center">Actions</th>
               </tr>
@@ -111,11 +111,12 @@
                       <span><%= @project.user.username %></span>
                     </div>
                   </td>
-                  <td class="py-3 px-6 text-center">
-                    <div class="flex items-center justify-center">
-                      <img class="w-6 h-6 rounded-full border-gray-200 border transform hover:scale-125" src="https://randomuser.me/api/portraits/men/1.jpg"/>
-                      <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/women/2.jpg"/>
-                      <img class="w-6 h-6 rounded-full border-gray-200 border -m-1 transform hover:scale-125" src="https://randomuser.me/api/portraits/men/3.jpg"/>
+                  <td class="py-3 px-6 text-left">
+                    <div class="flex items-center">
+                      <div class="mr-2">
+                        <img class="w-6 h-6 rounded-full" src="https://randomuser.me/api/portraits/men/1.jpg"/>
+                      </div>
+                      <span><%= User.find_by(id:task.reporter_id).username %></span>
                     </div>
                   </td>
                   <td class="py-3 px-6 text-center">

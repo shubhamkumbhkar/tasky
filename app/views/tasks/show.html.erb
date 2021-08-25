@@ -1,15 +1,17 @@
 <h3> Tasks </h3>
-  
-  <strong> <%= @task.name %> </strong>
-  &emsp; <%= @task.status %> &emsp;&emsp;&emsp;
-  <%= time_ago_in_words(@task.created_at) %> Ago
-  <br><br>
-  <% #byebug %>
+<% if @task.documents.attached? %>
+  <% @task.documents.each do |document|%>
+    <image src= "<%= (url_for(document))%> " width="50" height="60">
+  <%end%>
+<% end %>
+<strong> <%= @task.name %> </strong>
+&emsp; <%= @task.status %> &emsp;&emsp;&emsp;
+<%= time_ago_in_words(@task.created_at) %> Ago
+<br><br>
+<% #byebug %>
 
-    &emsp;<%= link_to "Edit", edit_project_task_path(@task.project,@task) %>
-
-
-    <%= link_to "Delete", project_task_path(@task.project,@task),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
-  <br>    
+&emsp;<%= link_to "Edit", edit_project_task_path(@task.project,@task) %>
+<%= link_to "Delete", project_task_path(@task.project,@task),
+  method: :delete,
+  data: { confirm: "Are you sure?" } %>
+      

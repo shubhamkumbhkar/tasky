@@ -11,8 +11,9 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = @project.tasks.new(task_params)
     @task.documents.attach(params[:task][:documents])
-
-    #byebug
+    @task.assignee_id = current_user.id
+    @task.reporter_id = User.find_by(username:params[:task][:reporter_id]).id
+    byebug
     if @task.save
       render "projects/show"
     else
@@ -22,7 +23,6 @@ class TasksController < ApplicationController
   def show
     #byebug
     @task =Project.find(params[:project_id]).tasks.find(params[:id]) 
-    #Project.find(params[:project_id]).tasks.find(params[:id])
   end
   def edit
     @project = Project.find(params[:project_id])

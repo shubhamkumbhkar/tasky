@@ -9,7 +9,10 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "stylesheets/application";
 
+require("trix")
+require("@rails/actiontext")
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+

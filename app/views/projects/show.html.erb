@@ -116,7 +116,7 @@
                       <div class="mr-2">
                         <img class="w-6 h-6 rounded-full" src="https://randomuser.me/api/portraits/men/1.jpg"/>
                       </div>
-                      <span><%= User.find_by(id:task.reporter_id).username %></span>
+                      <span><%= User.find_by(id:task.assignee_id).username %></span>
                     </div>
                   </td>
                   <td class="py-3 px-6 text-center">

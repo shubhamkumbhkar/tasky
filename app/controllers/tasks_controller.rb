@@ -11,8 +11,7 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = @project.tasks.new(task_params)
     @task.documents.attach(params[:task][:documents])
-    @task.assignee_id = current_user.id
-    @task.reporter_id = User.find_by(username:params[:task][:reporter_id]).id
+    @task.reporter_id = current_user.id
     byebug
     if @task.save
       render "projects/show"
@@ -50,7 +49,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :status, :description, documents: [])
+    params.require(:task).permit(:name, :status, :description, :assignee_id, documents: [])
   end
   
 end

@@ -6,6 +6,8 @@
 <% end %>
 <strong> <%= @task.name %> </strong>
 &emsp; <%= @task.status %> &emsp;&emsp;&emsp;
+<br>
+Description : <%= @task.description %>
 <%= time_ago_in_words(@task.created_at) %> Ago
 <br><br>
 <% #byebug %>
@@ -15,3 +17,9 @@
   method: :delete,
   data: { confirm: "Are you sure?" } %>
       
+<%= form_for [@task.project, @task, Comment.new] do |f| %>
+    <%= f.text_area :body, placeholder: "Add a comment"%>
+    <%= f.submit %>
+<% end %>
+
+<%= render partial: "comments/comments", locals:{commentable: @task} %>

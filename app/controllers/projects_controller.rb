@@ -12,6 +12,8 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     @project.documents.attach(params[:project][:documents])
+    @project.description.body = params[:description]
+    #byebug
     if @project.save
       render "projects/index"
     else
@@ -23,9 +25,11 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
   def update
+    #byebug
     @project = Project.find(params[:id])
     if @project.update(project_params)
       @project.documents.attach(params[:project][:documents])
+      @project.description.update(body:params[:description])
       render "projects/index"
     else
       redirect_to @project

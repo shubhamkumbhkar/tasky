@@ -34,6 +34,7 @@
                   <span><%= @project.user.username %></span>
                 </div>
               </td>
+              <% #byebug %>
               <td class="py-3 px-6 text-left">
                 <div class="flex items-center">
                   <span><%= @project.description %></span>
@@ -76,7 +77,13 @@
   </div>
 </div>
 
-      
+
+<% #byebug %>
+<%= render partial: "comments/form", locals:{commentable: @project} %>
+<%= render partial: "comments/comments", locals:{commentable: @project} %>
+
+
+<br>
 &emsp;<%= link_to "Create task", new_project_task_path(@project) %>
 
 <% if @project.tasks.any?%>

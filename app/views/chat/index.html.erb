@@ -1,23 +1,31 @@
-<div class="row">
-  <div class="col-md-9">
-    <ul id="conversations-list">
-      <% @conversations.each do |conversation| %>
-        <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
-      <% end %>
-    </ul>
-  </div>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <div class="col-md-3">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">User list</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          <% @users.each do |user| %>
-            <li><%= link_to user.email, conversations_path(user_id: user), remote: true, method: :post %></li>
-          <% end %>
-        </ul>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <ul id="conversations-list">
+        <% @conversations.each do |conversation| %>
+          <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">User list</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% @users.each do |user| %>
+              <li><%= link_to user.email, conversations_path(user_id: user), remote: true, method: :post %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

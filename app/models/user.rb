@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :projects, dependent: :destroy
+  has_many :messages
+  has_many :conversations, foreign_key: :sender_id
   
   validates  :fname, :lname, :username, :mnum, presence: true
   validates :username, presence: true, length: {minimum: 3, maximum: 20 },

@@ -1,3 +1,53 @@
 <h2>Edit Task</h2>
 
-<%= render "form" %>
+<div class="py-12">
+  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+      <div class="p-6 bg-white border-b border-gray-200">
+        <%= form_with model: @task, url: project_task_path(@task.project, @task), class:"w-full max-w-sm" do |f| %>
+          <div class="mb-4">
+            <label class="text-xl text-gray-600">  <%= f.label :Name  %><span class="text-red-500">*</span></label></br>
+            <%=  f.text_field :name, autofocus: true, class: "border-2 border-gray-300 p-2 w-full" %>
+          </div>
+          <div class="mb-4">
+            <label class="text-xl text-gray-600"> <%= f.label :Status  %> </label></br>
+            <%= f.select :status, ["Initiation", "Planning", "Execution", "Monitoring", "Closure"], { class: "border-2 border-gray-300 p-2 w-full"} %>
+          </div>
+          <div class="mb-4">
+            <label class="text-xl text-gray-600"> <%= f.label :Document  %> </label></br>
+            <%=  f.file_field :documents, multiple: true, class: "bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-500" %>
+          </div>
+
+          <div class="mb-8">
+            <label class="text-xl text-gray-600"><%= f.label :Description  %><span class="text-red-500">*</span></label></br>
+              <%=  f.rich_text_area :description, autofocus: true, class:"border-2 border-gray-500" %>
+          </div>
+          <div class="mb-4">
+            <label class="text-xl text-gray-600">  <%= f.label :'Reporter'  %><span class="text-red-500">*</span></label></br>
+            <%= 
+              f.select :reporter_id,
+              options_for_select(User.all.collect {|p| [ p.username, p.id ] },
+              (f.object.try(:reporter_id))),{prompt: 'Select assignee for Task'},
+              { class: "border-2 border-gray-300 p-2 w-full" }
+            %>
+          </div>
+          <div class="mb-4">
+            <label class="text-xl text-gray-600">  <%= f.label :'Assign to'  %><span class="text-red-500">*</span></label></br>
+            <%= 
+              f.select :assignee_id,
+              options_for_select(User.all.collect {|p| [ p.username, p.id ] },
+              (f.object.try(:assignee_id))),{prompt: 'Select assignee for Task'},
+              { class: "border-2 border-gray-300 p-2 w-full" }
+            %>
+          </div>
+          <div class="md:flex md:items-center">
+            <div class="md:w-1/3"></div>
+              <div class="md:w-2/3">
+                <%= f.submit "Create" , class: "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"%>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

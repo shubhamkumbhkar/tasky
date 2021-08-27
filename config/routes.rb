@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  get 'tasks/index'
   root to: 'home#index'
   devise_for :users
-
   
+  get '/chats', to: "chat#index"
+
+  resources :conversations, only: [:create] do
+    member do
+      post :close
+    end
+  end
   resources :projects do
     resources :comments, module: :projects
     resources :tasks do

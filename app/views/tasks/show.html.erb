@@ -14,9 +14,12 @@ Description :<span><%= @task.description %></span>
     <image src= "<%= (url_for(document))%> " width="250" height="400">
   <%end%>
 <% end %>
-<%= link_to 'edit', edit_project_task_path(@task.project,@task) %>
-<%= link_to 'delete', project_task_path(@task.project,@task),  method: :delete, data: { confirm: "Are you sure?" } %>
-      
+<% if can? :update, @task %>
+  <%= link_to 'edit', edit_project_task_path(@task.project,@task) %>
+<% end %>
+<% if can? :destroy, @task %>
+  <%= link_to 'delete', project_task_path(@task.project,@task),  method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>     
 <%= form_for [@task.project, @task, Comment.new] do |f| %>
     <%= f.text_area :body, placeholder: "Add a comment"%>
     <%= f.submit %>

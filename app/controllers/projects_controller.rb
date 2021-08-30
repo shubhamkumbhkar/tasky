@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   def index
     @projects = Project.all
+    @tasks = Task.all
   end
   def new
     @project = Project.new
@@ -28,7 +29,6 @@ class ProjectsController < ApplicationController
     @project.documents.attach(params[:project][:documents])
     @project.description.update(body:params[:project][:description])
     if @project.update(project_params)
-     
       render "projects/index"
     else
       redirect_to @project

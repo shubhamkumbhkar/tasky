@@ -5,6 +5,8 @@ Name : <span class="font-medium"><%= @task.name %></span>
 <br>
 Status : <span class="font-medium"><%= @task.status %></span>
 <br>
+<%= link_to 'Go to project', project_path(@task.project) %>
+<br>
 Description :<span><%= @task.description %></span>
 <% if @task.documents.attached? %>
   <strong> Images </strong>

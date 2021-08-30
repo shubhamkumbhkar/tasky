@@ -13,7 +13,8 @@
                 <th class="py-3 px-6 text-center">Actions</th>
               </tr>
             </thead>
-            <% if current_user.projects.any?%>
+            <% #byebug %>
+            <% if current_user.projects.any? %>
               <% current_user.projects.order(created_at: :desc).each do |project| %>
                 <tbody class="text-gray-600 text-sm font-light">
                   <tr class="border-b border-gray-200 hover:bg-gray-100">

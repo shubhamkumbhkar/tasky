@@ -52,6 +52,11 @@
             <% end %>
           </li>
           <li>
+            <%= link_to project_tasks_path(Project) do %>        
+              <span class="flex md:inline-flex p-4 items-center hover:bg-gray-50">Your tasks </span>
+            <% end %>
+          </li>
+          <li>
             <%= link_to new_project_path do %>        
               <span class="flex md:inline-flex p-4 items-center hover:bg-gray-50">Create</span>
             <% end %>

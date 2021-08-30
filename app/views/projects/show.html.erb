@@ -5,6 +5,8 @@ Name : <span class="font-medium"><%= @project.name %></span>
 <br>
 Status : <span class="font-medium"><%= @project.status %></span>
 <br>
+Created by : <span class="font-medium"><%= @project.user.username %></span>
+<br>
 Description :<span><%= @project.description %></span>
 <% if @project.documents.attached? %>
   <strong> Images </strong>

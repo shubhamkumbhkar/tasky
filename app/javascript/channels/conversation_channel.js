@@ -4,9 +4,6 @@ const chatChannel = consumer.subscriptions.create("ConversationChannel", {
   connected: function() {},
   disconnected: function() {},
   received: function(data) {
-    console.log(data['message']);
-  },
-  received: function(data) {
     var conversation = $('#conversations-list').find("[data-conversation-id='" + data['conversation_id'] + "']");
 
     if (data['window'] !== undefined) {

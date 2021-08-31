@@ -16,7 +16,6 @@ class ProjectsController < ApplicationController
     if @project.save
       render "projects/index"
     else
-      #byebug
       render "projects/new"
     end
   end
@@ -24,7 +23,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
   def update
-    #byebug
     @project = Project.find(params[:id])
     @project.documents.attach(params[:project][:documents])
     @project.description.update(body:params[:project][:description])

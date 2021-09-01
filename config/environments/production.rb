@@ -117,7 +117,4 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  # config.action_cable.mount_path = ‘/cable’
-  config.action_cable.url = 'wss://intense-cove-68616.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://intense-cove-68616.herokuapp.com', /http:\/\/intense-cove-68616.herokuapp.com.*/ ]
 end
